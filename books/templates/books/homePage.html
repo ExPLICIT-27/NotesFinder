@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Images/vitlogo.jpg" sizes="16x16" type = "image/jpg">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books/homestyles.css' %}">
+    <title>Notes Finder</title>
+</head>
+<body>
+    <section>
+        <div class = "navbar">
+            <span><a href="{% url 'subject_search' %}">Home</a></span>
+            <span><a href="{% url 'profile' %}">User</a></span>
+            <span><a href="{% url 'favorites_page' %}">Favourites</a></span>
+            <span class = "loginBtn"><a href="{% url 'login' %}">Login</a></span>
+        </div>
+        <form method='get' action = "{% url 'subject_search' %}">
+            <div class = "searchBox">
+                <input id = "searchInput" name = "q" value = "{{ query }}" type="search" placeholder="Enter subject code/name....." oninput = "performSearch()">
+                <button type = "submit" id = "searchButton">Search</button>
+            </div>
+        </form>
+        <div id = "resultsContainer">
+        {% if query %}
+                <h2>Results</h2>
+                <ul type = "none">
+                    {% for subject in subjects %}
+                        <li>
+                            <a href = "{% url 'subject_detail' subject.code %}">{{ subject.name }} ({{ subject.code }})</a>
+                        </li>
+                    {% empty %}
+                        <li>No subjects found</li>
+                    {% endfor %}
+                </ul>
+        {% endif %}
+        </div>
+    </section>
+    <script src = "{% static 'books/homescript.js' %}" defer></script>
+</body>
+</html>

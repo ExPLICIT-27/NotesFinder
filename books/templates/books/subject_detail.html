@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+    <head>
+        <meta charset = 'UTF-8'>
+        <meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'>
+        {% load static %}
+        <link rel='stylesheet' href = "{% static 'books/subjectStyles.css' %}">
+        <title>{{ subject.name }} - Notes Finder</title>
+    </head>
+    <body>
+        <section>
+            <div class = 'navbar'>
+                <span><a href = "{% url 'subject_search' %}">Home</a></span>
+                <span><a href = "{% url 'profile' %}">User</a></span>
+                <span><a href = "{% url 'favorites_page' %}">Favourites</a></span>
+                <span class = "loginBtn"><a href = "{% url 'login' %}">Login</a></span>
+            </div>
+
+            <div class = 'contentHeader'>
+                <h1>{{ subject.name }} ({{ subject.code }})</h1>
+            </div>
+            <div class = 'SubjectModules'>
+                <h2>Modules</h2>
+                <ul>
+                    {% for module in modules %}
+                        <li>
+                            <a href = "{{ module.file_path }}" target = '_blank'>{{ module.name }}</a>
+                        </li>
+                        {% empty %}
+                            <li>No modules available.</li>
+                        {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>

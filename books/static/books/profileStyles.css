@@ -1,0 +1,171 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-attachment: fixed;
+    background-image: url('Images/ProfileBg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.gohome{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+.gohome a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4em;
+}
+.gohome a:hover{
+    font-size: 1.6em;
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+    text-decoration: underline;
+}
+.container{
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.greeting h1{
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+}
+.profile-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-image img{
+    border-radius: 50%;
+}
+.profile-card{
+    width: 440px;
+    height: 300px;
+    border-radius: 20px;
+    border: 2px solid black;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+}
+.profile-card table{
+    margin: 10px;
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+}
+.logoutUrl{
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 1.4em;
+    background: transparent;
+    background-color: rgb(220, 40, 220);
+    padding: 10px;
+}
+.logoutUrl a{
+    text-decoration: none;
+    color: #fff;
+}
+.logoutUrl a:hover{
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Messages styling */
+.messages {
+    width: 100%;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.message {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.message ion-icon {
+    font-size: 1.5em;
+    margin-right: 5px;
+}
+
+.message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+}
+
+.success {
+    background-color: #1e3a8a;
+    border-left: 5px solid #10b981;
+}
+
+.error {
+    background-color: #7f1d1d;
+    border-left: 5px solid #ef4444;
+}
+
+.warning {
+    background-color: #78350f;
+    border-left: 5px solid #f59e0b;
+    color: white;
+}
+
+.info {
+    background-color: #0c4a6e;
+    border-left: 5px solid #0ea5e9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

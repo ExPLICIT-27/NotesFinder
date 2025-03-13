@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books/profileStyles.css' %}">
+    <!-- Add Ionicons for message icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="gohome">
+        <span><a href="{% url 'subject_search' %}">Home</a></span>
+    </div>
+    <div class="container">
+        <!-- Messages section -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                {% if message.tags == 'success' %}
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                {% elif message.tags == 'error' %}
+                    <ion-icon name="alert-circle"></ion-icon>
+                {% elif message.tags == 'warning' %}
+                    <ion-icon name="warning"></ion-icon>
+                {% elif message.tags == 'info' %}
+                    <ion-icon name="information-circle"></ion-icon>
+                {% endif %}
+                <span style="margin-left: 10px;">{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="greeting">
+            <h1>Hi, {{ user.username }} :)</h1>
+        </div>
+        <div class="profile-card">
+            <div class="profile-image">
+                <form id="profile-pic-form" method="POST" enctype="multipart/form-data" action="{% url 'update_profile_picture' %}">
+                    {% csrf_token %}
+                    <input type="file" id="profile-pic-input" name="profile-picture" accept="image/*" style="display: none;" onchange="uploadProfilePic()">
+                    <label for="profile-pic-input">
+                        {% if user_profile.profile_picture %}
+                            <img src="{{ user_profile.profile_picture.url }}" alt='profilePicture' width='150' height='150' id="profile-pic">
+                        {% else %}
+                            <img src="{% static 'books/Images/defaultProfile.jpg' %}" width="150" height="150" id="profile-pic">
+                        {% endif %}
+                    </label>
+                </form>
+            </div>
+            <table cellspacing='5' cellpadding='5'>
+                <tr>
+                    <td>USERNAME : </td>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td>EMAIL : </td>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <td>DATE OF JOINING : </td>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class='logoutUrl'>
+            <a href="{% url 'logout' %}">LOGOUT</a>
+        </div>
+    </div>
+</body>
+<script src="{%static 'books/profileScript.js'%}" defer></script>
+</html>

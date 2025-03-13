@@ -1,0 +1,262 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+section{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    background: url('Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+}
+section header{
+    color: #fff;
+    font-size: 2em;
+    position: absolute;
+    top: 60px;
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+
+}
+@keyframes animateBg{
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+.login-box{
+    position: relative;
+    width: 400px;
+    height: 450px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+.input-box{
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+}
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #fff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.input-box input:focus~label{
+    top: -5px;
+} /* what i understoord: if somebody clicks on it, or it already has a valid value, then go up 5px*/
+.input-box input:valid~label{
+    top: -5px;
+}
+.input-box input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 35px 0 5px;
+
+}
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    line-height: 57px;
+    font-size: 1.2em;
+}
+.remember-forgot{
+    color: #fff;
+    justify-content: space-between;
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    display: flex;
+}
+.remember-forgot label input{
+    margin-right: 3px;
+}
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+button{
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    background-image: linear-gradient(to right, orange, red);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    font-weight: 500;
+    font-size: 1em;
+    cursor: pointer;
+
+}
+.register-link{
+    font-size: 0.9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: underlinex;
+}
+@media (max-width: 360px){ /*Making the login mobile size friendly*/
+    .login-box{
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+    .input-box{
+        width: 290px;
+    }
+}
+.gohome{
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 50px;
+    width: 110px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: transparent;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+.gohome a{
+    text-decoration: none;
+    font-size: 1.6em;
+    margin:4px;
+    color: #fff;
+}
+.gohome a:hover{
+    text-decoration: underline;
+    font-size: 1.6em;
+    font-weight: 600;
+    z-index: 1;
+    text-shadow: 
+    1px 1px 2px rgba(255, 255, 255, 0.2),
+    2px 2px 5px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(255, 255, 255, 0.4),
+    4px 4px 15px rgba(255, 255, 255, 0.5);
+}
+.gohome .icon{
+    top:2px;
+    font-size: 1.6em;
+}
+#reglink:hover{
+    text-decoration: underline;
+    font-size: 1.1em;
+}
+.messages {
+    width: 100%;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.message {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.message ion-icon {
+    font-size: 1.5em;
+    margin-right: 5px;
+}
+
+.message::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+}
+
+.success {
+    background-color: #1e3a8a;
+    border-left: 5px solid #10b981;
+}
+
+.error {
+    background-color: #7f1d1d;
+    border-left: 5px solid #ef4444;
+}
+
+.warning {
+    background-color: #78350f;
+    border-left: 5px solid #f59e0b;
+    color: white;
+}
+
+.info {
+    background-color: #0c4a6e;
+    border-left: 5px solid #0ea5e9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.messageSection{
+    position: absolute;
+    margin: 10px;
+    top: 86px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Subjects</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'books/favoriteStyles.css' %}">
+</head>
+<body>
+    <div class = "gohome">
+        <span><a href="{% url 'subject_search' %}">Home</a></span>
+    </div>
+    <div class="container">
+        <h1>Your Favorite Subjects</h1>
+        {% if favorites %}
+            <ul>
+                {% for favorite in favorites %}
+                    <li data-subject-id="{{ favorite.subject.id }}">
+                        <a href="{% url 'subject_detail' favorite.subject.code %}">{{ favorite.subject.name }} ({{ favorite.subject.code }})</a>
+                        <form method = "post" action = "{% url 'remove_from_favorites' %}">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "subject_id" value = "{{ favorite.subject.id }}">
+                            <button type = "submit" class = "removefavbtn">Remove</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no favorite subjects yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Search Form -->
+    <form method="get" action="{% url 'fav_search' %}">
+        <div class="searchBox">
+            <input id="searchInput" name="q" value="{{ query }}" type="search" placeholder="Enter subject code/name..." oninput="performSearch()">
+            <button type="submit" id="searchButton">Search</button>
+        </div>
+    </form>
+
+    <!-- Search Results -->
+    <div id="resultsContainer">
+        {% if query %}
+            <h2>Results</h2>
+            <ul>
+                {% for subject in subjects %}
+                    <li data-subject-id="{{ subject.id }}">
+                        <a href="{% url 'subject_detail' subject.code %}">{{ subject.name }} ({{ subject.code }})</a>
+
+                        <form method = "post" action = "{% url 'add_to_favorites' %}">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "subject_id" value = "{{ subject.id }}">
+                            <button class="addToFavBtn">Add to Favorites</button>
+                        </form>
+                    </li>
+                {% empty %}
+                    <li>No subjects found</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <script src="{% static 'books/favoriteScript.js' %}" defer></script>
+</body>
+</html>
+
