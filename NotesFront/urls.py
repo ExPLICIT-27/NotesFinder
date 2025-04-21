@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', include('books.urls')),
     path('', lambda request : redirect('books/search', permanent = False))
-]
+] 
 
 # Serve media files in development
 if settings.DEBUG:

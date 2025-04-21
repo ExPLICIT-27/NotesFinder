@@ -12,7 +12,7 @@ class Subject(models.Model):
 class Module(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='modules')
     name = models.CharField(max_length = 255)
-    file_path = models.CharField(max_length=500)
+    file = models.FileField(upload_to='modules/', null = True, blank = True)
     
     def __str__(self):
         return f"{self.subject.name} - {self.name}"
