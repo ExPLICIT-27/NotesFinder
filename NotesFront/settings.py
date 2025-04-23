@@ -24,8 +24,12 @@ SECRET_KEY = 'django-insecure-b4us7%s(8x^105zc^v)ln_1xjo1&h9xi)+*5qlw26de!z@wm6k
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = [
+    'notesfinder-production.up.railway.app',
+    'localhost',  # (optional, for local dev)
+    '127.0.0.1',  # (optional, for local dev)
+]
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
